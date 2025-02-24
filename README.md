@@ -54,8 +54,7 @@ For the attack to work properly and to manipulate traffic, you need to set up ap
 ```bash
 # Create a new chain for our intercepted traffic
 iptables --flush
-iptables -I OUTPUT -j NFQUEUE --queue-num 0
-iptables -I INPUT -j NFQUEUE --queue-num 0
+iptables -I FORWARD -j NFQUEUE --queue-num 1
 ```
 
 Remember to clear these rules after finishing your tests:
