@@ -11,6 +11,7 @@ This Python script uses the Scapy library to perform an ARP poisoning attack. Th
 - Python 3.x
 - Scapy library
 - Root/administrator permissions
+- iptables (for Linux systems)
 
 ## 🚀 Installation
 
@@ -35,9 +36,33 @@ sudo python arpPoisoning.py
 
 ## 🔍 How It Works
 
-1. The script enables IP forwarding (`ip_forward`) to allow intercepted traffic to continue flowing.
+1. The script enables IP forwarding (`ip_forward`) to allow intercepted traffic to continue flowing:
+   ```
+   echo 1 > /proc/sys/net/ipv4/ip_forward
+   ```
+
 2. It continuously sends falsified ARP packets to both target hosts.
+
 3. When the user interrupts the script with Ctrl+C, the hosts' ARP tables are cleaned up.
+
+## 🔧 iptables Configuration
+
+For the attack to work properly and to manipulate traffic, you need to set up appropriate iptables rules. These rules aren't explicitly created in the script, so you'll need to configure them manually before running the tool:
+
+### Basic iptables Setup for Traffic Interception
+
+```bash
+# Create a new chain for our intercepted traffic
+iptables --flush
+iptables -I OUTPUT -j NFQUEUE --queue-num 0
+iptables -I INPUT -j NFQUEUE --queue-num 0
+```
+
+Remember to clear these rules after finishing your tests:
+
+```bash
+iptables --flush
+```
 
 ## ⚠️ Important Note
 
