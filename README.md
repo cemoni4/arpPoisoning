@@ -22,7 +22,9 @@ pip install scapy
 ## 🛠️ Usage
 
 1. Modify the `target1_host` and `target2_host` variables with the IP addresses of the hosts you want to intercept.
-2. Run the script with root privileges:
+2. Enables IP forwarding
+3. Setup iptables
+4. Run the script with root privileges:
 
 ```bash
 sudo python arpPoisoning.py
