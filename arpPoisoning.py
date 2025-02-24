@@ -39,8 +39,8 @@ def clean_target_arp_table(destination_host, source_host):
 
 
 packet_counter = 0
-target1_host = "192.168.220.128"
-target2_host = "192.168.220.7"
+target1_host = "" #Insert target 1
+target2_host = "" #Insert target 2
 
 try:
     while True:
