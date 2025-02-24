@@ -24,7 +24,7 @@ pip install scapy
 2. Run the script with root privileges:
 
 ```bash
-sudo python arp_spoofer.py
+sudo python arpPoisoning.py
 ```
 
 ## ✨ Main Features
